@@ -18,42 +18,59 @@ from model import TinyNet
 # Task 1: Compute Loss
 # ===========================================================================
 # Step 1: Instantiate TinyNet with num_classes=5.
-model = None
+model = TinyNet(num_classes=5) #Netzwerk erstellen (z.B. fünf Pflanzenarten)
 
 # Step 2: Create a dummy input of shape (4, 3, 32, 32) — a batch of 4 images.
-dummy_input = None
+dummy_input = torch.randn(4, 3, 32, 32) #Four randomm pictures
 
 # Step 3: Create dummy target labels as a tensor: [0, 2, 4, 1].
 #         These are the "correct" class indices for each image.
-targets = None
+targets = torch.tensor([0, 2, 4, 1]) #Klassen der vier Bilder (1=0, 2=2, ...)
 
 # Step 4: Define the loss function using nn.CrossEntropyLoss().
-criterion = None
+criterion = nn.CrossEntropyLoss() #Auswahl Loss-Funktion
 
 # Step 5: Run a forward pass to get outputs, then compute the loss
 #         by passing (outputs, targets) to the loss function.
 #         Print the loss value using .item() to get a Python float.
-outputs=None
-loss=None
+outputs = model(dummy_input) #Forward Pass - Bilder durchs Model - für jedes 5 Zahlen
+loss = criterion(outputs, targets) #Fehler berechnen
+
+print("Loss:", loss.item())
 
 # ===========================================================================
 # Task 2: One Optimizer Step
 # ===========================================================================
 # Step 1: Define an Adam optimizer using torch.optim.Adam().
 #         Pass model.parameters() and lr=0.001.
-optimizer = None
+optimizer = torch.optim.Adam(model.parameters(), lr=0.001)
+
 # Step 2: Print the loss from Task 1 (before any weight update).
-#
+print("Loss before:", loss.item())
+
 # Step 3: Perform the standard update cycle:
 #         - Clear old gradients (they accumulate by default), hint: use .zero_grad()
 #         - Compute new gradients from the loss (.backward())
 #         - Update the weights (.step())
-#
+optimizer.zero_grad()    # 1. clear old gradients
+loss.backward()          # 2. compute new gradients
+optimizer.step()         # 3. update weights
+
 # Step 4: Run another forward pass with the same input and compute
 #         the new loss. Print it.
 #         It should differ from the first — the weights were updated.
-outputs_after = None
-loss_after = None
+outputs_after = model(dummy_input)
+loss_after = criterion(outputs_after, targets)
+print("Loss after:", loss_after.item())
+
+# A third time
+optimizer.zero_grad()    # 1. clear old gradients
+loss_after.backward()          # 2. compute new gradients
+optimizer.step()         # 3. update weights
+outputs_three = model(dummy_input)
+loss_three = criterion(outputs_three, targets)
+print("Loss three:", loss_three.item())
+
 
 
 # ===========================================================================

@@ -50,13 +50,25 @@ class PlantWildDataset(Dataset):
         #           integer index: {"apple_scab": 0, "tomato_blight": 1, ...}
         #           The indices follow the sorted order from Step 1.
         #           Store as self.class_to_idx.
-        self.class_to_idx = None
+        self.class_to_idx = {
+            class_name: idx
+            for idx, class_name in enumerate(self.classes)
+        }
+
         #
         #   Step 2: Build a list of (file_path, label) tuples.
         #           For each class folder, loop over its files. For each file,
         #           store the full path and the integer label from Step 1.
         #           Store as self.samples.
-        self.samples = None
+        self.samples = []
+
+        for class_name in self.classes:
+            class_dir = os.path.join(self.root_dir, class_name)
+            label = self.class_to_idx[class_name]
+
+            for filename in os.listdir(class_dir):
+                file_path = os.path.join(class_dir, filename)
+                self.samples.append((file_path, label))
         
 
     def __len__(self):
@@ -81,7 +93,14 @@ class PlantWildDataset(Dataset):
         #           to RGB ensures a consistent 3-channel input.
         #   Step 3: Apply self.transform if it is not None.
         #   Step 4: Return (image, label).
-        pass
+        file_path, label = self.samples[idx]
+
+        image = Image.open(file_path).convert("RGB")
+
+        if self.transform is not None:
+            image = self.transform(image)
+
+        return image, label
 
 
 # ===========================================================================

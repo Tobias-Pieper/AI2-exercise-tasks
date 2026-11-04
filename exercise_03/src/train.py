@@ -44,7 +44,7 @@ def train_one_epoch(model, dataloader, criterion, optimizer, device, log_interva
     """
     # TODO: Set the model to training mode (.train).
     #       This enables dropout and batch normalization updates.
-
+    model.train()
 
     running_loss = 0.0
     running_correct = 0
@@ -54,18 +54,22 @@ def train_one_epoch(model, dataloader, criterion, optimizer, device, log_interva
         # TODO: Complete the training step.
         #
         #   Step 1: Move images and labels to the device using .to(device).
-        #
+        images = images.to(device)
+        labels = labels.to(device)
+
         #   Step 2: Clear old gradients from the optimizer.
-        #
+        optimizer.zero_grad()
         #   Step 3: Forward pass — get model outputs from the images.
-        #
+        outputs = model(images)
         #   Step 4: Compute the loss using the criterion.
         #           Pass (outputs, labels) — not (labels, outputs).
-        #
+        loss = criterion(outputs, labels)
         #   Step 5: Backward pass — compute gradients from the loss.
-        #
+        loss.backward()
         #   Step 6: Update weights with the optimizer.
+        optimizer.step() 
 
+ 
 
         # --- Accumulate metrics (do not modify) ---
         batch_size = images.size(0)
@@ -91,7 +95,7 @@ def validate(model, dataloader, criterion, device):
     """
     # TODO: Set the model to evaluation mode (.eval).
     #       This disables dropout and freezes batch normalization.
-
+    model.eval()
 
     running_loss = 0.0
     running_correct = 0
@@ -102,9 +106,12 @@ def validate(model, dataloader, criterion, device):
     #       Inside, for each batch:
     #
     #   Step 1: Move images and labels to device.
+    images = images.to(device)
+    labels = labels.to(device)
     #   Step 2: Forward pass only — no backward, no optimizer step.
+    outputs = model(images)
     #   Step 3: Compute loss (for logging, not for training).
-    #
+    loss = criterion(outputs, labels)
     #   The metric accumulation code below handles the rest.
 
     for images, labels in dataloader:
@@ -136,7 +143,10 @@ def main(config_path):
     #   The log directory should include the experiment name so each
     #   experiment gets its own subfolder. Combine config["logging"]["log_dir"]
     #   and config["experiment_name"] using os.path.join().
-    log_dir = None
+    log_dir = os.path.join(
+        config["logging"]["log_dir"],
+        config["experiment_name"]
+    )
     writer = SummaryWriter(log_dir=log_dir)
 
     image_size = config["data"]["image_size"]

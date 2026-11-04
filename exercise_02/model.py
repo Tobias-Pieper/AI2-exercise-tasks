@@ -18,26 +18,40 @@ class TinyNet(nn.Module):
     def __init__(self, num_classes=5):
         super().__init__()
 # Step 1: Define self.features as nn.Sequential with two conv blocks:
-#
+#       
 #         Block 1: Conv2d(3→8, kernel_size=3, padding=1) → ReLU → MaxPool2d(2)
 #         Block 2: Conv2d(8→16, kernel_size=3, padding=1) → ReLU → MaxPool2d(2)
 #
 #         Each MaxPool2d(2) halves the spatial dimensions.
 #         Input 32×32 → after block 1: 16×16 → after block 2: 8×8.
-        self.features = None
+        self.features = nn.Sequential(
+            nn.Conv2d(3, 8, kernel_size=3, padding=1), #3xEingabe, 8xAusgabe/Filter, Kernel=3x3 Filter, Padding=1Pixel Bildrand
+            nn.ReLU(), #nicht nur linearer Zusammenhang (-Werte = 0, +Werte = bleiben so)
+            nn.MaxPool2d(2), #Guckt 2x2 und nimmt größten Wert -> Bild wird komprimiert
+
+            nn.Conv2d(8, 16, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2)
+        )
 # Step 2: Define self.classifier as nn.Sequential with one Linear layer.
 #         Input size = 16 channels × 8 × 8 = 1024.
 #         Output size = num_classes.
-        self.classifier = None
+        self.classifier = nn.Sequential(
+            nn.Linear(16 * 8 * 8, num_classes), 
+            #16 Merkmalskarten mit jeweils 8 × 8 Werten -> nimmt 1024 Werte und berechnet 5 Ausgaben (Logits, keine Wahrscheinlichkeit)
+        )
 #
 # Implementing the forward method:
-    def forward(self, x):
+    def forward(self, x): #Weg durchs Netzwerk
 #         Pass x through self.features.
 #         Flatten: x = x.view(x.size(0), -1)
 #           x.size(0) keeps the batch dimension, -1 flattens the rest.
 #         Pass through self.classifier.
 #         Return the output.
-        pass
+        x = self.features(x) #dircj beide Convolution-Blöcke
+        x = x.view(x.size(0), -1) #Flatten (Merkmalskarten -> Liste / 4, 16, 8, 8 -> 4, 1024)
+        x = self.classifier(x) #1.024 Merkmale (jedes Bildes) -> fünf Ausgabewerten
+        return x
 
 
 # ===========================================================================
@@ -45,16 +59,16 @@ class TinyNet(nn.Module):
 # ===========================================================================
 if __name__ == "__main__":
     # Step 1: Instantiate TinyNet with num_classes=5.
-    model = None
+    model = TinyNet(num_classes=5)
     #
     # Step 2: Create a dummy input tensor of shape (1, 3, 32, 32).
     #         This represents one RGB 32×32 image.
-    dummy_input = None
+    dummy_input = torch.randn(1, 3, 32, 32)
     #
     # Step 3: Pass it through the model and print:
     #         - Output shape (expected: [1, 5])
     #         - Raw output values (these are logits, not probabilities)
-    output = None
+    output = model(dummy_input)
 
 
     # ===========================================================================

@@ -26,28 +26,53 @@ def get_train_transforms(image_size, augmentation=True):
     """
     if augmentation:
         # TODO: Create a Compose pipeline with augmentation.
-        #
+        transform = transforms.Compose([
+
         #   Step 1: RandomResizedCrop(image_size) — randomly crop a region
         #           and resize it to image_size. This provides both scale
         #           and position variation.
+            transforms.RandomResizedCrop(image_size), #Random position of picture
+
         #   Step 2: RandomHorizontalFlip() — flip with 50% probability.
+            transforms.RandomHorizontalFlip(p=0.5), #flip to left/right
+
         #   Step 3: ColorJitter — randomly adjust brightness, contrast,
         #           saturation (0.2 each) and hue (0.1).
+            transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
+        
+
         #   Step 4: ToTensor() — converts PIL image to a float tensor
         #           and scales pixel values from [0, 255] to [0, 1].
+            transforms.ToTensor(),
+
         #   Step 5: Normalize with ImageNet mean and std.
         #           mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
-        transform = None
+            transforms.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
+            )
+        ])        
+
     else:
         # TODO: Create a Compose pipeline WITHOUT augmentation.
-        #
+        transform = transforms.Compose([
         #   Step 1: Resize(image_size + 32) — resize to slightly larger.
+            transforms.Resize(image_size + 32),
+
         #   Step 2: CenterCrop(image_size) — crop the center to exact size.
         #           Resize + CenterCrop ensures consistent framing without
         #           random variation.
+            transforms.CenterCrop(image_size),
+
         #   Step 3: ToTensor()
+            transforms.ToTensor(),
+
         #   Step 4: Normalize with same ImageNet mean and std.
-        transform = None
+            transforms.Normalize(
+                mean=[0.485, 0.456, 0.406],
+                std=[0.229, 0.224, 0.225]
+            )
+        ])
 
     return transform
 
@@ -67,7 +92,15 @@ def get_val_transforms(image_size):
     #       Resize → CenterCrop → ToTensor → Normalize.
     #       Validation must always produce identical output for the
     #       same input, so no random transforms.
-    transform = None
+    transform = transforms.Compose([
+        transforms.Resize(image_size + 32),
+        transforms.CenterCrop(image_size),
+        transforms.ToTensor(),
+        transforms.Normalize(
+            mean=[0.485, 0.456, 0.406],
+            std=[0.229, 0.224, 0.225]
+        )
+    ])
 
     return transform
 

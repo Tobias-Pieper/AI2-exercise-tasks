@@ -17,6 +17,11 @@ import torch
 #
 # Hint: torch.randn() creates a tensor with random values from a
 # normal distribution. Pass the dimensions as arguments.
+a = torch.randn(2, 3, 224, 224)
+
+print(a.shape)    # torch.Size([2, 3, 224, 224])
+print(a.dtype)    # torch.float32 (default)
+print(a.device)   # cpu (default)
 
 
 # ===========================================================================
@@ -28,6 +33,11 @@ import torch
 # Step 1: Check if CUDA is available using torch.cuda.is_available().
 # Step 2: Move the tensor using .to('cuda').
 # Step 3: Print the .device attribute to confirm.
+print("Before:", a.device)
+
+if torch.cuda.is_available():
+    a_gpu = a.to('cuda')
+    print("After:", a_gpu.device)
 
 
 # ===========================================================================
@@ -41,7 +51,13 @@ import torch
 #
 # Step 2: Extract only the green channel (index 1) of that image.
 #         Print its shape — should be (32, 32).
+b = torch.randn(8, 3, 32, 32)
 
+image_five = b[4]
+print(image_five.shape)
+
+green_channel = image_five[1]
+print(green_channel.shape)
 
 # ===========================================================================
 # Task 4: Permute — HWC to CHW
@@ -52,7 +68,10 @@ import torch
 # Step 1: Convert to PyTorch's CHW format using .permute().
 #         You need to reorder dimensions: dim 2 → 0, dim 0 → 1, dim 1 → 2.
 # Step 2: Print both shapes to confirm (64, 64, 3) → (3, 64, 64).
+c = torch.randn(64, 64, 3) #HWC
 
+img_chw = c.permute(2,0,1) #CHW
+print(c.shape, img_chw.shape)
 
 # ===========================================================================
 # Task 5: Squeeze and Unsqueeze
@@ -66,7 +85,13 @@ import torch
 #
 # This pattern is common: models expect batched input [B, C, H, W],
 # so a single image needs unsqueeze before passing through.
+d = torch.randn(3, 128, 128)
 
+d_batched = d.unsqueeze(0)
+print(d_batched.shape)
+
+d_unbatched = d_batched.squeeze(0)
+print(d_unbatched.shape)
 
 # ===========================================================================
 # Task 6: Reshaping — Flatten
@@ -80,7 +105,11 @@ import torch
 # Use .view() or .reshape(). The batch dimension (4) stays, everything
 # else gets flattened into one dimension. You can pass -1 to let
 # PyTorch infer the flattened size automatically.
+e = torch.randn(4, 16, 8, 8)
 
+e_flat = e.view(4, -1)
+#e_flat = e.view(4, 1024)
+print(e_flat.shape)
 
 # ===========================================================================
 # Task 7: Basic Math
@@ -93,3 +122,15 @@ import torch
 #    Compute the mean pixel value across the batch dimension (dim=0).
 #    Print the resulting shape — should be (3, 32, 32).
 #    This is how dataset mean is computed for normalization.
+# a)
+f = torch.randn(3,3)
+g = torch.randn(3,3)
+
+prod = f * g
+matrix_prod = f @ g
+print(prod, matrix_prod)
+
+#b)
+h = torch.randn(4, 3, 32, 32)
+mean = h.mean(dim=0)
+print(mean.shape)
