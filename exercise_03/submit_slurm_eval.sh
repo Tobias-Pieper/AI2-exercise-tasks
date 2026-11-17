@@ -7,4 +7,4 @@
 source /opt/miniconda3/bin/activate /opt/conda_envs/course_env
 
 python src/evaluate.py --config config.yaml \
-    --checkpoint outputs/checkpoints/plantwild_baseline_best.pt
+    --checkpoint outputs/checkpoints/plantwild_baselin-no_augmentatio_best.pt

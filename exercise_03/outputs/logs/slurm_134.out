@@ -1,0 +1,410 @@
+Loaded config from: config.yaml
+Using device: cuda
+Train samples: 2928 | Val samples: 831
+Classes: ['apple_leaf', 'basil_leaf', 'cabbage_leaf', 'citrus_canker', 'cucumber_leaf', 'grape_downy_mildew', 'maple_leaf', 'plum_leaf', 'squash_leaf', 'tomato_early_blight']
+Model parameters: 102,602
+
+Epoch [1/30]
+    Batch [10/92] Loss: 2.3346
+    Batch [20/92] Loss: 2.1857
+    Batch [30/92] Loss: 2.2976
+    Batch [40/92] Loss: 2.1673
+    Batch [50/92] Loss: 2.1271
+    Batch [60/92] Loss: 2.1836
+    Batch [70/92] Loss: 2.2324
+    Batch [80/92] Loss: 2.1010
+    Batch [90/92] Loss: 2.1426
+  Train Loss: 2.2296 | Train Acc: 0.1936
+  Val   Loss: 2.0958 | Val   Acc: 0.2647
+  ✓ Saved best checkpoint (val_acc=0.2647) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [2/30]
+    Batch [10/92] Loss: 2.2340
+    Batch [20/92] Loss: 2.3227
+    Batch [30/92] Loss: 2.0578
+    Batch [40/92] Loss: 2.2841
+    Batch [50/92] Loss: 2.1980
+    Batch [60/92] Loss: 2.0348
+    Batch [70/92] Loss: 2.2477
+    Batch [80/92] Loss: 2.2354
+    Batch [90/92] Loss: 2.1692
+  Train Loss: 2.1454 | Train Acc: 0.2346
+  Val   Loss: 2.0512 | Val   Acc: 0.3032
+  ✓ Saved best checkpoint (val_acc=0.3032) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [3/30]
+    Batch [10/92] Loss: 2.2070
+    Batch [20/92] Loss: 2.2203
+    Batch [30/92] Loss: 2.1998
+    Batch [40/92] Loss: 2.1202
+    Batch [50/92] Loss: 2.2170
+    Batch [60/92] Loss: 2.0626
+    Batch [70/92] Loss: 1.9525
+    Batch [80/92] Loss: 2.1523
+    Batch [90/92] Loss: 2.0111
+  Train Loss: 2.1154 | Train Acc: 0.2500
+  Val   Loss: 1.9923 | Val   Acc: 0.3153
+  ✓ Saved best checkpoint (val_acc=0.3153) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [4/30]
+    Batch [10/92] Loss: 1.9875
+    Batch [20/92] Loss: 1.9660
+    Batch [30/92] Loss: 1.8843
+    Batch [40/92] Loss: 2.1475
+    Batch [50/92] Loss: 1.9521
+    Batch [60/92] Loss: 2.2619
+    Batch [70/92] Loss: 2.0568
+    Batch [80/92] Loss: 2.1909
+    Batch [90/92] Loss: 2.1717
+  Train Loss: 2.0737 | Train Acc: 0.2708
+  Val   Loss: 1.9604 | Val   Acc: 0.3093
+
+Epoch [5/30]
+    Batch [10/92] Loss: 1.9851
+    Batch [20/92] Loss: 2.0345
+    Batch [30/92] Loss: 2.0896
+    Batch [40/92] Loss: 2.2082
+    Batch [50/92] Loss: 2.1149
+    Batch [60/92] Loss: 1.9421
+    Batch [70/92] Loss: 2.1389
+    Batch [80/92] Loss: 2.0083
+    Batch [90/92] Loss: 2.0747
+  Train Loss: 2.0600 | Train Acc: 0.2712
+  Val   Loss: 1.8867 | Val   Acc: 0.3634
+  ✓ Saved best checkpoint (val_acc=0.3634) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [6/30]
+    Batch [10/92] Loss: 2.3709
+    Batch [20/92] Loss: 2.1212
+    Batch [30/92] Loss: 1.9283
+    Batch [40/92] Loss: 2.0652
+    Batch [50/92] Loss: 2.1195
+    Batch [60/92] Loss: 1.9829
+    Batch [70/92] Loss: 1.8131
+    Batch [80/92] Loss: 1.7132
+    Batch [90/92] Loss: 2.3052
+  Train Loss: 2.0403 | Train Acc: 0.2855
+  Val   Loss: 1.8666 | Val   Acc: 0.3562
+
+Epoch [7/30]
+    Batch [10/92] Loss: 1.9695
+    Batch [20/92] Loss: 2.0018
+    Batch [30/92] Loss: 1.9364
+    Batch [40/92] Loss: 1.9132
+    Batch [50/92] Loss: 2.0271
+    Batch [60/92] Loss: 2.0268
+    Batch [70/92] Loss: 2.1299
+    Batch [80/92] Loss: 2.1650
+    Batch [90/92] Loss: 2.0272
+  Train Loss: 2.0318 | Train Acc: 0.2845
+  Val   Loss: 1.9033 | Val   Acc: 0.3670
+  ✓ Saved best checkpoint (val_acc=0.3670) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [8/30]
+    Batch [10/92] Loss: 2.0088
+    Batch [20/92] Loss: 1.9707
+    Batch [30/92] Loss: 2.0194
+    Batch [40/92] Loss: 1.9660
+    Batch [50/92] Loss: 2.0157
+    Batch [60/92] Loss: 2.1529
+    Batch [70/92] Loss: 2.0417
+    Batch [80/92] Loss: 2.0432
+    Batch [90/92] Loss: 2.1443
+  Train Loss: 2.0241 | Train Acc: 0.2865
+  Val   Loss: 1.8582 | Val   Acc: 0.3526
+
+Epoch [9/30]
+    Batch [10/92] Loss: 2.1654
+    Batch [20/92] Loss: 2.0521
+    Batch [30/92] Loss: 1.8790
+    Batch [40/92] Loss: 1.9066
+    Batch [50/92] Loss: 2.0773
+    Batch [60/92] Loss: 2.1764
+    Batch [70/92] Loss: 2.2630
+    Batch [80/92] Loss: 1.9168
+    Batch [90/92] Loss: 1.7661
+  Train Loss: 2.0152 | Train Acc: 0.2944
+  Val   Loss: 1.8274 | Val   Acc: 0.3971
+  ✓ Saved best checkpoint (val_acc=0.3971) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [10/30]
+    Batch [10/92] Loss: 2.0184
+    Batch [20/92] Loss: 2.0439
+    Batch [30/92] Loss: 1.9344
+    Batch [40/92] Loss: 1.9486
+    Batch [50/92] Loss: 2.1249
+    Batch [60/92] Loss: 1.8585
+    Batch [70/92] Loss: 1.9945
+    Batch [80/92] Loss: 1.9409
+    Batch [90/92] Loss: 1.8079
+  Train Loss: 1.9994 | Train Acc: 0.3036
+  Val   Loss: 1.8514 | Val   Acc: 0.3923
+
+Epoch [11/30]
+    Batch [10/92] Loss: 2.0595
+    Batch [20/92] Loss: 2.0093
+    Batch [30/92] Loss: 1.8829
+    Batch [40/92] Loss: 1.6650
+    Batch [50/92] Loss: 2.0137
+    Batch [60/92] Loss: 2.1139
+    Batch [70/92] Loss: 1.9484
+    Batch [80/92] Loss: 2.0033
+    Batch [90/92] Loss: 1.8527
+  Train Loss: 1.9915 | Train Acc: 0.2958
+  Val   Loss: 1.8184 | Val   Acc: 0.3983
+  ✓ Saved best checkpoint (val_acc=0.3983) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [12/30]
+    Batch [10/92] Loss: 2.0175
+    Batch [20/92] Loss: 1.9708
+    Batch [30/92] Loss: 2.0262
+    Batch [40/92] Loss: 2.0220
+    Batch [50/92] Loss: 1.9124
+    Batch [60/92] Loss: 2.1570
+    Batch [70/92] Loss: 1.9653
+    Batch [80/92] Loss: 1.9809
+    Batch [90/92] Loss: 2.0231
+  Train Loss: 1.9799 | Train Acc: 0.3005
+  Val   Loss: 1.8300 | Val   Acc: 0.3887
+
+Epoch [13/30]
+    Batch [10/92] Loss: 1.9307
+    Batch [20/92] Loss: 1.7890
+    Batch [30/92] Loss: 1.9117
+    Batch [40/92] Loss: 1.9312
+    Batch [50/92] Loss: 2.0673
+    Batch [60/92] Loss: 1.9121
+    Batch [70/92] Loss: 1.9011
+    Batch [80/92] Loss: 2.1080
+    Batch [90/92] Loss: 1.7638
+  Train Loss: 1.9602 | Train Acc: 0.3122
+  Val   Loss: 1.7976 | Val   Acc: 0.3947
+
+Epoch [14/30]
+    Batch [10/92] Loss: 2.0086
+    Batch [20/92] Loss: 1.9964
+    Batch [30/92] Loss: 1.7172
+    Batch [40/92] Loss: 2.0667
+    Batch [50/92] Loss: 2.1063
+    Batch [60/92] Loss: 1.8552
+    Batch [70/92] Loss: 1.8212
+    Batch [80/92] Loss: 2.0905
+    Batch [90/92] Loss: 2.1190
+  Train Loss: 1.9828 | Train Acc: 0.3118
+  Val   Loss: 1.8099 | Val   Acc: 0.3887
+
+Epoch [15/30]
+    Batch [10/92] Loss: 1.8559
+    Batch [20/92] Loss: 2.1475
+    Batch [30/92] Loss: 2.0962
+    Batch [40/92] Loss: 2.0993
+    Batch [50/92] Loss: 2.1060
+    Batch [60/92] Loss: 1.9106
+    Batch [70/92] Loss: 2.0688
+    Batch [80/92] Loss: 2.1673
+    Batch [90/92] Loss: 1.9181
+  Train Loss: 1.9638 | Train Acc: 0.3176
+  Val   Loss: 1.7675 | Val   Acc: 0.3899
+
+Epoch [16/30]
+    Batch [10/92] Loss: 2.2492
+    Batch [20/92] Loss: 1.8727
+    Batch [30/92] Loss: 1.9656
+    Batch [40/92] Loss: 1.9906
+    Batch [50/92] Loss: 1.9255
+    Batch [60/92] Loss: 1.7809
+    Batch [70/92] Loss: 1.9201
+    Batch [80/92] Loss: 1.8429
+    Batch [90/92] Loss: 1.8311
+  Train Loss: 1.9592 | Train Acc: 0.3207
+  Val   Loss: 1.7889 | Val   Acc: 0.4103
+  ✓ Saved best checkpoint (val_acc=0.4103) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [17/30]
+    Batch [10/92] Loss: 1.9034
+    Batch [20/92] Loss: 1.9639
+    Batch [30/92] Loss: 2.0171
+    Batch [40/92] Loss: 2.0766
+    Batch [50/92] Loss: 1.7814
+    Batch [60/92] Loss: 1.8125
+    Batch [70/92] Loss: 2.2531
+    Batch [80/92] Loss: 1.7884
+    Batch [90/92] Loss: 1.8966
+  Train Loss: 1.9522 | Train Acc: 0.3231
+  Val   Loss: 1.7448 | Val   Acc: 0.4067
+
+Epoch [18/30]
+    Batch [10/92] Loss: 1.8878
+    Batch [20/92] Loss: 1.9463
+    Batch [30/92] Loss: 2.0449
+    Batch [40/92] Loss: 1.9076
+    Batch [50/92] Loss: 1.8692
+    Batch [60/92] Loss: 1.9402
+    Batch [70/92] Loss: 2.2614
+    Batch [80/92] Loss: 2.1345
+    Batch [90/92] Loss: 2.0015
+  Train Loss: 1.9317 | Train Acc: 0.3299
+  Val   Loss: 1.7418 | Val   Acc: 0.4164
+  ✓ Saved best checkpoint (val_acc=0.4164) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [19/30]
+    Batch [10/92] Loss: 2.2366
+    Batch [20/92] Loss: 1.7501
+    Batch [30/92] Loss: 1.8458
+    Batch [40/92] Loss: 1.9712
+    Batch [50/92] Loss: 2.3479
+    Batch [60/92] Loss: 1.8716
+    Batch [70/92] Loss: 1.8799
+    Batch [80/92] Loss: 1.8268
+    Batch [90/92] Loss: 1.8030
+  Train Loss: 1.9443 | Train Acc: 0.3309
+  Val   Loss: 1.7559 | Val   Acc: 0.4128
+
+Epoch [20/30]
+    Batch [10/92] Loss: 1.8638
+    Batch [20/92] Loss: 1.6874
+    Batch [30/92] Loss: 1.9898
+    Batch [40/92] Loss: 1.6721
+    Batch [50/92] Loss: 1.7383
+    Batch [60/92] Loss: 2.0520
+    Batch [70/92] Loss: 1.9656
+    Batch [80/92] Loss: 1.6807
+    Batch [90/92] Loss: 2.0802
+  Train Loss: 1.9334 | Train Acc: 0.3364
+  Val   Loss: 1.7571 | Val   Acc: 0.4248
+  ✓ Saved best checkpoint (val_acc=0.4248) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [21/30]
+    Batch [10/92] Loss: 1.9665
+    Batch [20/92] Loss: 1.9763
+    Batch [30/92] Loss: 1.7367
+    Batch [40/92] Loss: 1.9480
+    Batch [50/92] Loss: 1.9285
+    Batch [60/92] Loss: 2.0262
+    Batch [70/92] Loss: 1.8769
+    Batch [80/92] Loss: 1.8726
+    Batch [90/92] Loss: 1.9087
+  Train Loss: 1.9155 | Train Acc: 0.3347
+  Val   Loss: 1.7098 | Val   Acc: 0.4344
+  ✓ Saved best checkpoint (val_acc=0.4344) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [22/30]
+    Batch [10/92] Loss: 1.9356
+    Batch [20/92] Loss: 2.0008
+    Batch [30/92] Loss: 1.7070
+    Batch [40/92] Loss: 1.8118
+    Batch [50/92] Loss: 2.0705
+    Batch [60/92] Loss: 1.7920
+    Batch [70/92] Loss: 1.8446
+    Batch [80/92] Loss: 1.9157
+    Batch [90/92] Loss: 1.9365
+  Train Loss: 1.9142 | Train Acc: 0.3357
+  Val   Loss: 1.7735 | Val   Acc: 0.3887
+
+Epoch [23/30]
+    Batch [10/92] Loss: 2.2413
+    Batch [20/92] Loss: 1.5205
+    Batch [30/92] Loss: 1.8272
+    Batch [40/92] Loss: 2.0977
+    Batch [50/92] Loss: 1.8829
+    Batch [60/92] Loss: 1.7386
+    Batch [70/92] Loss: 1.5195
+    Batch [80/92] Loss: 1.5862
+    Batch [90/92] Loss: 2.0721
+  Train Loss: 1.9122 | Train Acc: 0.3405
+  Val   Loss: 1.6910 | Val   Acc: 0.4525
+  ✓ Saved best checkpoint (val_acc=0.4525) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [24/30]
+    Batch [10/92] Loss: 1.9526
+    Batch [20/92] Loss: 1.9040
+    Batch [30/92] Loss: 1.9402
+    Batch [40/92] Loss: 1.7087
+    Batch [50/92] Loss: 1.8800
+    Batch [60/92] Loss: 2.0144
+    Batch [70/92] Loss: 1.9130
+    Batch [80/92] Loss: 1.9369
+    Batch [90/92] Loss: 2.1199
+  Train Loss: 1.9160 | Train Acc: 0.3555
+  Val   Loss: 1.6958 | Val   Acc: 0.4320
+
+Epoch [25/30]
+    Batch [10/92] Loss: 1.7739
+    Batch [20/92] Loss: 1.8202
+    Batch [30/92] Loss: 1.8822
+    Batch [40/92] Loss: 1.8028
+    Batch [50/92] Loss: 1.8433
+    Batch [60/92] Loss: 1.7489
+    Batch [70/92] Loss: 1.7454
+    Batch [80/92] Loss: 1.6710
+    Batch [90/92] Loss: 1.8295
+  Train Loss: 1.8981 | Train Acc: 0.3535
+  Val   Loss: 1.6863 | Val   Acc: 0.4609
+  ✓ Saved best checkpoint (val_acc=0.4609) → outputs/checkpoints/plantwild_baseline_best.pt
+
+Epoch [26/30]
+    Batch [10/92] Loss: 1.7454
+    Batch [20/92] Loss: 1.9980
+    Batch [30/92] Loss: 1.7911
+    Batch [40/92] Loss: 1.8098
+    Batch [50/92] Loss: 1.8951
+    Batch [60/92] Loss: 2.0188
+    Batch [70/92] Loss: 2.0352
+    Batch [80/92] Loss: 1.8671
+    Batch [90/92] Loss: 2.0354
+  Train Loss: 1.8900 | Train Acc: 0.3497
+  Val   Loss: 1.7000 | Val   Acc: 0.4452
+
+Epoch [27/30]
+    Batch [10/92] Loss: 2.0134
+    Batch [20/92] Loss: 2.0295
+    Batch [30/92] Loss: 1.9698
+    Batch [40/92] Loss: 1.8829
+    Batch [50/92] Loss: 1.9923
+    Batch [60/92] Loss: 2.0027
+    Batch [70/92] Loss: 1.6338
+    Batch [80/92] Loss: 1.7894
+    Batch [90/92] Loss: 1.8308
+  Train Loss: 1.8795 | Train Acc: 0.3470
+  Val   Loss: 1.7938 | Val   Acc: 0.4079
+
+Epoch [28/30]
+    Batch [10/92] Loss: 1.8949
+    Batch [20/92] Loss: 1.7460
+    Batch [30/92] Loss: 1.9613
+    Batch [40/92] Loss: 1.9876
+    Batch [50/92] Loss: 1.6595
+    Batch [60/92] Loss: 1.7488
+    Batch [70/92] Loss: 1.8759
+    Batch [80/92] Loss: 1.7921
+    Batch [90/92] Loss: 2.2268
+  Train Loss: 1.8680 | Train Acc: 0.3634
+  Val   Loss: 1.6665 | Val   Acc: 0.4248
+
+Epoch [29/30]
+    Batch [10/92] Loss: 2.0419
+    Batch [20/92] Loss: 1.9692
+    Batch [30/92] Loss: 1.9099
+    Batch [40/92] Loss: 1.6515
+    Batch [50/92] Loss: 1.5459
+    Batch [60/92] Loss: 2.0429
+    Batch [70/92] Loss: 2.1697
+    Batch [80/92] Loss: 1.8564
+    Batch [90/92] Loss: 1.9611
+  Train Loss: 1.8770 | Train Acc: 0.3494
+  Val   Loss: 1.6570 | Val   Acc: 0.4537
+
+Epoch [30/30]
+    Batch [10/92] Loss: 1.7212
+    Batch [20/92] Loss: 1.8868
+    Batch [30/92] Loss: 1.8208
+    Batch [40/92] Loss: 1.8685
+    Batch [50/92] Loss: 2.0431
+    Batch [60/92] Loss: 1.9232
+    Batch [70/92] Loss: 1.8780
+    Batch [80/92] Loss: 1.8599
+    Batch [90/92] Loss: 1.8235
+  Train Loss: 1.8708 | Train Acc: 0.3497
+  Val   Loss: 1.6361 | Val   Acc: 0.4428
+
+Training complete. Best val accuracy: 0.4609

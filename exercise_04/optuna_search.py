@@ -63,26 +63,33 @@ def objective(trial, base_config):
     #           Set log=True — learning rate is best searched on a
     #           logarithmic scale because the difference between
     #           0.001 and 0.01 matters more than between 0.091 and 0.1.
+    lr = trial.suggest_float("learning_rate", 1e-5, 1e-2, log=True)
+
     #
     #   Step 2: Suggest a dropout value.
     #           Use trial.suggest_float() with name="dropout".
     #           Search between 0.2 and 0.7 (uniform scale is fine here).
+    dropout = trial.suggest_float("dropout", 0.2, 0.7)
     #
     #   Step 3: Suggest a batch size.
     #           Use trial.suggest_categorical() with name="batch_size".
     #           Choose from [16, 32, 64].
     #           Categorical because batch size must be a specific value,
     #           not a continuous range.
+    batch_size = trial.suggest_categorical("batch_size", [16, 32, 64])
     #
     #   Step 4: Update the config dict with the suggested values:
     #           config["training"]["learning_rate"] = lr
     #           config["model"]["dropout"] = dropout
     #           config["data"]["batch_size"] = batch_size
+    config["training"]["learning_rate"] = lr
+    config["model"]["dropout"] = dropout
+    config["data"]["batch_size"] = batch_size
 
     # TODO: Call train_and_evaluate(config) and return the result.
     #       This trains the model with the suggested hyperparameters
     #       and returns the best validation accuracy.
-    val_accuracy = None
+    val_accuracy = train_and_evaluate(config) #trains model with optunas suggested values + checks validation
 
     return val_accuracy
 
@@ -99,7 +106,7 @@ def main(config_path):
     #   Step 2: Set direction="maximize" — we want the highest
     #           validation accuracy, not the lowest.
     #   Step 3: Optionally set study_name to the experiment name from config.
-    study = None
+    study = optuna.create_study(direction="maximize")
 
     # TODO: Run the optimization.
     #
@@ -109,6 +116,7 @@ def main(config_path):
     #           Optuna passes only the trial, use a lambda:
     #           lambda trial: objective(trial, base_config)
     #   Step 3: Set n_trials=5 in the config file (config["training"]["n_trials"]) to limit the number of trials.
+    study.optimize(lambda trial: objective(trial, base_config), n_trials = base_config["training"]["n_trials"])
 
 
     # --- Print results ---
@@ -121,8 +129,11 @@ def main(config_path):
     # TODO: Print the best trial's results.
     #
     #   Step 1: Get the best trial using study.best_trial.
+    best = study.best_trial
     #   Step 2: Print its .value (the best validation accuracy).
+    print(best.value)
     #   Step 3: Print its .params (dict of hyperparameters that achieved it).
+    print(best.params)
 
 
     # --- Print all trials summary ---
