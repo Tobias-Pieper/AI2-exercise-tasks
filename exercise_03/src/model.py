@@ -39,8 +39,8 @@ class PlantCNN(nn.Module):
         #   padding=1 with kernel_size=3 keeps spatial dimensions unchanged
         #   before pooling. Each MaxPool2d(2) halves the dimensions.
         #   BatchNorm2d takes the number of channels as its argument.
-        self.features = self.features = nn.Sequential(
-                nn.Conv2d(3, 32, kernel_size=3, padding=1), #extrahiert Merkmale
+        self.features = nn.Sequential(
+                nn.Conv2d(3, 32, kernel_size=3, padding=1), #extrahiert Merkmale (32 Filter mir 3x3)
                 nn.BatchNorm2d(32), #normalisiert die Aktivierungen
                 nn.ReLU(), #fügt Nichtlinearität hinzu
                 nn.MaxPool2d(2), #reduziert die räumliche Auflösung
@@ -48,27 +48,27 @@ class PlantCNN(nn.Module):
                 nn.Conv2d(32, 64, kernel_size=3, padding=1),
                 nn.BatchNorm2d(64),
                 nn.ReLU(),
-                nn.MaxPool2d(2)
+                nn.MaxPool2d(2),
 
                 nn.Conv2d(64, 128, kernel_size=3, padding=1),
                 nn.BatchNorm2d(128),
                 nn.ReLU(),
                 nn.MaxPool2d(2)
-            )
+            ) #At the end 128 feautures
 
         # TODO: Define self.pool as nn.AdaptiveAvgPool2d(1).
         #   This reduces any spatial size to 1×1, so the classifier
         #   always receives 128 features regardless of input image size.
-        self.pool = nn.AdaptiveAvgPool2d(1)
+        self.pool = nn.AdaptiveAvgPool2d(1) # Brings the 128 features together
 
         # TODO: Define self.classifier as nn.Sequential:
         #   Linear(128, 64) → ReLU → Dropout(dropout) → Linear(64, num_classes)
         #
-        #   The input is 128 because self.pool outputs 128 channels × 1 × 1.
+        #   The input is 128 because self.pool outputs 128 channels × 1 × 1. (Vector with 128 values)
         self.classifier = nn.Sequential(
-            nn.Linear(128, 64)
-            nn.ReLU()
-            nn.Dropout(dropout)
+            nn.Linear(128, 64),
+            nn.ReLU(),
+            nn.Dropout(dropout), #Makes randomly the weight of neurons to 0 - no overfitting
             nn.Linear(64, num_classes)
         )
 

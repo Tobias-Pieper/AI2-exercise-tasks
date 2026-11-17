@@ -43,17 +43,20 @@ def compute_accuracy(outputs, targets):
     #
     #   Step 1: Get predicted class for each sample. The predicted class
     #           is the index with the highest logit value — use .argmax(dim=1).
-    predictions = None
+    predictions = outputs.argmax(dim=1) #class label of highest value
+
     #   Step 2: Compare predictions with targets to count correct ones.
     #           (predictions == targets) gives a boolean tensor.
     #           .sum() counts the True values. Use .item() to convert single-element tensors to Python floats.
-    correct = None
+    correct = (predictions == targets).sum().item() #Summe der korrekten werte weil True = 1
+
     # Step 3: Get the toal count of the target (hint: .size(0)) and divide correct count by total count to compute accuracy
-    accuracy = None
+    total = targets.size(0)
+    accuracy = correct / total
     return accuracy
 
 
-def save_checkpoint(model, optimizer, epoch, val_accuracy, filepath):
+def save_checkpoint(model, optimizer, epoch, val_accuracy, filepath): #In case of crash or overfitting
     """
     Save model and optimizer state to a .pt file.
 
@@ -74,7 +77,7 @@ def save_checkpoint(model, optimizer, epoch, val_accuracy, filepath):
     torch.save(checkpoint, filepath)
 
 
-def load_checkpoint(filepath, model, optimizer=None):
+def load_checkpoint(filepath, model, optimizer=None): #Loading of the checkpoint
     """
     Load a checkpoint and restore model (and optionally optimizer) state.
 

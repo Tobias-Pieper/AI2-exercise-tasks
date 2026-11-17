@@ -52,7 +52,7 @@ class PlantWildDataset(Dataset):
         #           Store as self.class_to_idx.
         self.class_to_idx = {
             class_name: idx
-            for idx, class_name in enumerate(self.classes)
+            for idx, class_name in enumerate(self.classes) #Stores Names and a number "apple_scub":0, ...
         }
 
         #
@@ -62,9 +62,9 @@ class PlantWildDataset(Dataset):
         #           Store as self.samples.
         self.samples = []
 
-        for class_name in self.classes:
-            class_dir = os.path.join(self.root_dir, class_name)
-            label = self.class_to_idx[class_name]
+        for class_name in self.classes: #Go through all classes
+            class_dir = os.path.join(self.root_dir, class_name) #creates path to class folder
+            label = self.class_to_idx[class_name] #Takes the class index
 
             for filename in os.listdir(class_dir):
                 file_path = os.path.join(class_dir, filename)
@@ -73,7 +73,7 @@ class PlantWildDataset(Dataset):
 
     def __len__(self):
         # TODO: Return the total number of samples.
-        pass
+        return len(self.samples)
 
     def __getitem__(self, idx):
         """
@@ -88,19 +88,17 @@ class PlantWildDataset(Dataset):
         # TODO: Load one image and return it with its label.
         #
         #   Step 1: Get the file path and label from self.samples[idx].
+        image_path, label = self.samples[idx]
         #   Step 2: Open the image with PIL and convert to "RGB".
         #           Some images may be grayscale or RGBA — converting
         #           to RGB ensures a consistent 3-channel input.
+        image = Image.open(image_path).convert("RGB")
         #   Step 3: Apply self.transform if it is not None.
-        #   Step 4: Return (image, label).
-        file_path, label = self.samples[idx]
-
-        image = Image.open(file_path).convert("RGB")
-
         if self.transform is not None:
             image = self.transform(image)
-
+        #   Step 4: Return (image, label).
         return image, label
+    
 
 
 # ===========================================================================

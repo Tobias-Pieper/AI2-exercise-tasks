@@ -40,7 +40,6 @@ def get_train_transforms(image_size, augmentation=True):
         #           saturation (0.2 each) and hue (0.1).
             transforms.ColorJitter(brightness=0.2, contrast=0.2, saturation=0.2, hue=0.1),
         
-
         #   Step 4: ToTensor() — converts PIL image to a float tensor
         #           and scales pixel values from [0, 255] to [0, 1].
             transforms.ToTensor(),
